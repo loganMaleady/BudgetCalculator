@@ -1,0 +1,14 @@
+<p>calculate works!</p>
+<div id="jobs" *ngFor="let job of jobs">
+    <mat-card id="job">
+        <mat-card-content>
+            <mat-card-title>{{job.name}}</mat-card-title>
+            
+            <mat-card-subtitle>Pay Type:   {{job.payType}}</mat-card-subtitle>
+            <mat-card-subtitle>Pay Period: {{job.payTime}}</mat-card-subtitle>
+            <mat-card-subtitle>Pay Rate:   ${{job.wage}}</mat-card-subtitle>
+            
+            
+        </mat-card-content>
+    </mat-card>
+</div>
