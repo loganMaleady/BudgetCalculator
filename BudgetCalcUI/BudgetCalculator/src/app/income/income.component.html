@@ -26,51 +26,53 @@
 
 
 
-<mat-expansion-panel id="expanel" [expanded]="step === 1" (opened)="setStep(1)" (closed)="setStep(0)" hideToggle>
+<mat-expansion-panel #expanel id="expanel" [expanded]="step === 1" (opened)="setStep(1)" (closed)="setStep(0)" hideToggle>
     <mat-expansion-panel-header id="expanelHeader">
-    <mat-panel-title id="expanelTitle">
-        Add Job
-    </mat-panel-title>
-    <mat-panel-description>
-        Add a new income source
-        <mat-icon *ngIf="step != 1">add</mat-icon>
-        <mat-icon *ngIf="step == 1">remove</mat-icon>
-    </mat-panel-description>
+      <mat-panel-title id="expanelTitle">
+          Add Job
+      </mat-panel-title>
+      <mat-panel-description>
+          Add a new income source
+          <mat-icon *ngIf="step != 1">add</mat-icon>
+          <mat-icon *ngIf="step == 1">remove</mat-icon>
+      </mat-panel-description>
     </mat-expansion-panel-header>
-
-    <mat-form-field appearance="outline">
-        <mat-label>Job Name</mat-label>
-        <input matInput [(ngModel)]="currName" required >
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-    <mat-label>Pay Type</mat-label>
-    <mat-select [(ngModel)]="currPayType" required>
-        <mat-option value="Hourly">Hourly</mat-option>
-        <mat-option value="Salary">Salary</mat-option>
-    </mat-select>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" >
+  
+    <form #jobForm="ngForm" (ngSubmit)="submit(jobForm)">
+      <mat-form-field appearance="outline">
+          <mat-label>Job Name</mat-label>
+          <input matInput [(ngModel)]="currName" name="currName" required >
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Pay Type</mat-label>
+        <mat-select [(ngModel)]="currPayType" name="currPayType" required>
+            <mat-option value="Hourly">Hourly</mat-option>
+            <mat-option value="Salary">Salary</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" >
         <mat-label>Pay Period</mat-label>
-        <mat-select [(ngModel)]="currPayTime" required>
+        <mat-select [(ngModel)]="currPayTime" name="currPayTime" required>
             <mat-option value="Weekly">Weekly</mat-option>
             <mat-option value="Bi-Weekly">Bi-Weekly</mat-option>
             <mat-option value="Monthly">Monthly</mat-option>
         </mat-select>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-        <mat-label>Wage</mat-label>
-        <input matInput type="number" [(ngModel)]="currWage" required>
-    </mat-form-field>
-
-    <mat-action-row>
-    <button mat-button color="primary" (click)="submit()" [disabled]="canSubmit()">
-        Add Job 
-    </button>
-    </mat-action-row>
-</mat-expansion-panel>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+          <mat-label>Wage</mat-label>
+          <input matInput type="number" [(ngModel)]="currWage" name="currWage" required>
+      </mat-form-field>
+  
+      <mat-action-row>
+        <button mat-button color="primary" type="submit" [disabled]="canSubmit()">
+          Add Job 
+        </button>
+      </mat-action-row>
+    </form>
+  </mat-expansion-panel>
   
   
   

@@ -5,7 +5,7 @@ import { MatTableModule } from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {FloatLabelType, MatFormFieldModule} from '@angular/material/form-field';
-import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule, FormGroupDirective} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -34,7 +34,7 @@ export class CalculateComponent {
   currPayTime: string = "";
   currWage: number = 0;
 
- // @ViewChild('myForm', {static: false}) myForm: NgForm;
+ //@ViewChild('myForm', {static: false}) myForm: NgForm;
 
   setStep(index: number) {
     this.step = index;
@@ -46,7 +46,7 @@ export class CalculateComponent {
 
   
 
-  submit(){
+  submit(form: NgForm){
     var payPeriod = "";
     if(this.currPayType == "Hourly"){
       payPeriod = "Hr";
@@ -64,11 +64,12 @@ export class CalculateComponent {
     this.jobs.push(job); 
     this.id++;
     this.nextStep()
+    form.resetForm();
     this.currName ="";
     this.currPayType = "";
     this.currPayTime = "";
     this.currWage = 0;
-    //this.myForm.resetForm();
+    
   }
 
   
@@ -77,7 +78,7 @@ export class CalculateComponent {
   }
 
   canSubmit(): boolean{
-    return !(this.currName!="" && this.currPayTime!="" && this.currPayType!="" && this.currWage != null)
+    return !(this.currName != "" && this.currPayTime !="" && this.currPayType !="" && this.currWage != null)
   }
 
 }
