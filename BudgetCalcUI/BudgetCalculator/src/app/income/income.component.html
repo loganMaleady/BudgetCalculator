@@ -1,0 +1,76 @@
+
+<div id="jobs" *ngFor="let job of jobs">
+    <mat-card id="job">
+        <mat-card-content>
+            <mat-card-title-group>
+                <mat-card-title>{{job.name}}</mat-card-title>
+                <button mat-icon-button aria-label="Delete Job Button" (click)="delete(job.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+
+
+            </mat-card-title-group>
+
+
+
+            <mat-card-subtitle>Pay Type:   {{job.payType}}</mat-card-subtitle>
+            <mat-card-subtitle>Pay Period: {{job.payTime}}</mat-card-subtitle>
+            <mat-card-subtitle>Pay Rate:   ${{job.wage}}/{{job.payRatePeriod}}</mat-card-subtitle>
+            
+            
+        </mat-card-content>
+    </mat-card>
+</div>
+
+
+
+
+
+<mat-expansion-panel id="expanel" [expanded]="step === 1" (opened)="setStep(1)" (closed)="setStep(0)" hideToggle>
+    <mat-expansion-panel-header id="expanelHeader">
+    <mat-panel-title id="expanelTitle">
+        Add Job
+    </mat-panel-title>
+    <mat-panel-description>
+        Add a new income source
+        <mat-icon *ngIf="step != 1">add</mat-icon>
+        <mat-icon *ngIf="step == 1">remove</mat-icon>
+    </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Job Name</mat-label>
+        <input matInput [(ngModel)]="currName" required >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+    <mat-label>Pay Type</mat-label>
+    <mat-select [(ngModel)]="currPayType" required>
+        <mat-option value="Hourly">Hourly</mat-option>
+        <mat-option value="Salary">Salary</mat-option>
+    </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" >
+        <mat-label>Pay Period</mat-label>
+        <mat-select [(ngModel)]="currPayTime" required>
+            <mat-option value="Weekly">Weekly</mat-option>
+            <mat-option value="Bi-Weekly">Bi-Weekly</mat-option>
+            <mat-option value="Monthly">Monthly</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Wage</mat-label>
+        <input matInput type="number" [(ngModel)]="currWage" required>
+    </mat-form-field>
+
+    <mat-action-row>
+    <button mat-button color="primary" (click)="submit()" [disabled]="canSubmit()">
+        Add Job 
+    </button>
+    </mat-action-row>
+</mat-expansion-panel>
+  
+  
+  

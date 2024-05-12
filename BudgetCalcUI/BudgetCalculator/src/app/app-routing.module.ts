@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashBoardComponent } from './dash-board/dash-board.component';
-import { CalculateComponent } from './calculate/calculate.component';
+import { CalculateComponent } from './income/income.component';
 
 const routes: Routes = [
 
   { path: "dash", component: DashBoardComponent},
-  { path: "calculate", component: CalculateComponent}
+  { path: "Myincome", component: CalculateComponent},
+  
 
 ];
 

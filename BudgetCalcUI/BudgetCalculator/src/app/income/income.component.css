@@ -1,0 +1,44 @@
+#job{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: .5rem;
+    
+}
+
+
+
+#addButton{
+    background-color: #1447E1;
+    box-shadow: none !important;
+}
+
+#expanel{
+    margin-top: 10px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+mat-expansion-panel-header:hover {
+    background-color: white !important
+}
+
+.mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+}
+  
+
+.mat-mdc-form-field + .mat-mdc-form-field {
+    margin-left: 8px;
+}
+
+.mat-panel-header-title{
+    font-size: xx-large !important;
+    font-weight: bold;
+}
+.mat-expansion-panel-header-title {
+    color: black;
+    font-size: large;
+  }
